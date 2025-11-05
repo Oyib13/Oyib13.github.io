@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Aplikasi Penjualan Laptop</title>
+  <!-- <link rel="stylesheet" href="/style.css">  -->
+  <!-- TailwindCSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 p-6">
+
+  <div class="max-w-4xl mx-auto bg-white p-6 rounded shadow">
+    <h1 class="text-2xl font-bold mb-4">Aplikasi Penjualan Laptop</h1>
+
+    <!-- Form Input Laptop -->
+    <form id="laptopForm" class="mb-6 space-y-4 bg-gray-50 p-4 rounded">
+      <div>
+        <label for="kode" class="block font-semibold">Kode Laptop</label>
+        <input type="text" id="kode" name="kode" required class="w-full p-2 border border-gray-300 rounded" placeholder="Masukkan kode laptop" />
+      </div>
+      <div>
+        <label for="nama" class="block font-semibold">Nama Laptop</label>
+        <input type="text" id="nama" name="nama" required class="w-full p-2 border border-gray-300 rounded" placeholder="Masukkan nama laptop" />
+      </div>
+      <div>
+        <label for="merek" class="block font-semibold">Merek Laptop</label>
+        <input type="text" id="merek" name="merek" required class="w-full p-2 border border-gray-300 rounded" placeholder="Masukkan merek laptop" />
+      </div>
+      <div>
+        <label for="harga" class="block font-semibold">Harga</label>
+        <input type="number" id="harga" name="harga" required class="w-full p-2 border border-gray-300 rounded" placeholder="Masukkan harga laptop" />
+      </div>
+      <div>
+        <label for="stok" class="block font-semibold">Stok</label>
+        <input type="number" id="stok" name="stok" required class="w-full p-2 border border-gray-300 rounded" placeholder="Masukkan stok laptop" />
+      </div>
+      <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Simpan</button>
+      <button type="button" id="resetForm" class="ml-2 bg-gray-400 text-white px-4 py-2 rounded hover:bg-gray-500">Bersihkan</button>
+       <a href="/index.html" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 inline-block">home</a>
+    </form>
+     
+    <!-- Pencarian -->
+    <div class="mb-4">
+      <input type="text" id="searchInput" placeholder="Cari berdasarkan nama atau merek laptop" 
+        class="w-full p-2 border border-gray-300 rounded" />
+        
+    </div>
+
+    <!-- Tabel Data Laptop -->
+    <div class="overflow-x-auto">
+      <table class="min-w-full border-collapse border border-gray-300">
+        <thead>
+          <tr class="bg-blue-600 text-white">
+            <th class="border border-gray-300 px-4 py-2">Kode</th>
+            <th class="border border-gray-300 px-4 py-2">Nama</th>
+            <th class="border border-gray-300 px-4 py-2">Merek</th>
+            <th class="border border-gray-300 px-4 py-2">Harga</th>
+            <th class="border border-gray-300 px-4 py-2">Stok</th>
+            <th class="border border-gray-300 px-4 py-2">Aksi</th>
+          </tr>
+        </thead>
+        <tbody id="laptopTableBody"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <script>
+    // Fungsi mengambil data laptop dari LocalStorage
+    function getLaptopData() {
+      const data = localStorage.getItem('laptopData');
+      return data ? JSON.parse(data) : [];
+    }
+
+    // Fungsi simpan data laptop ke LocalStorage
+    function saveLaptopData(data) {
+      localStorage.setItem('laptopData', JSON.stringify(data));
+    }
+
+    // Fungsi render tabel berdasarkan data yang ada dan filter pencarian
+    function renderTable(filter = '') {
+      let laptops = getLaptopData();
+
+      if (filter.trim() !== '') {
+        let filterLower = filter.toLowerCase();
+        laptops = laptops.filter(laptop =>
+          laptop.nama.toLowerCase().includes(filterLower) || 
+          laptop.merek.toLowerCase().includes(filterLower)
+        );
+      }
+
+      const tbody = document.getElementById('laptopTableBody');
+      tbody.innerHTML = '';
+
+      if (laptops.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="6" class="text-center py-4">Data tidak ditemukan</td></tr>`;
+        return;
+      }
+
+      laptops.forEach((laptop, index) => {
+        const tr = document.createElement('tr');
+        tr.classList.add('border-t');
+
+        tr.innerHTML = `
+          <td class="border border-gray-300 px-4 py-2">${laptop.kode}</td>
+          <td class="border border-gray-300 px-4 py-2">${laptop.nama}</td>
+          <td class="border border-gray-300 px-4 py-2">${laptop.merek}</td>
+          <td class="border border-gray-300 px-4 py-2">Rp ${laptop.harga.toLocaleString()}</td>
+          <td class="border border-gray-300 px-4 py-2">${laptop.stok}</td>
+          <td class="border border-gray-300 px-4 py-2 space-x-2">
+            <button class="editBtn bg-yellow-400 px-2 py-1 rounded hover:bg-yellow-500" data-index="${index}">Edit</button>
+            <button class="deleteBtn bg-red-500 text-white px-2 py-1 rounded hover:bg-red-600" data-index="${index}">Hapus</button>
+          </td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+
+    // Fungsi untuk reset form ke default
+    function resetForm() {
+      document.getElementById('laptopForm').reset();
+      editingIndex = null;
+      document.querySelector('#laptopForm button[type="submit"]').textContent = 'Simpan';
+    }
+
+    let editingIndex = null; // Menyimpan index data yang diedit
+
+    document.getElementById('laptopForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      const kode = event.target.kode.value.trim();
+      const nama = event.target.nama.value.trim();
+      const merek = event.target.merek.value.trim();
+      const harga = Number(event.target.harga.value);
+      const stok = Number(event.target.stok.value);
+ 
+      if (!kode || !nama || !merek || isNaN(harga) || isNaN(stok)) {
+        alert('Semua data wajib diisi dengan benar.');
+        return;
+      }
+
+      let laptops = getLaptopData();
+
+      if (editingIndex !== null) {
+        // Update data
+        // Pastikan kode yang diedit tidak duplicate (kecuali kode lama)
+        const duplicate = laptops.findIndex(
+          (item, idx) => item.kode === kode && idx !== editingIndex
+        );
+        if (duplicate !== -1) {
+          alert('Kode laptop sudah digunakan pada data lain.');
+          return;
+        }
+
+        laptops[editingIndex] = { kode, nama, merek, harga, stok };
+        alert('Data berhasil diperbarui.');
+      } else {
+        // Tambah data baru
+        const duplicate = laptops.find(item => item.kode === kode);
+        if (duplicate) {
+          alert('Kode laptop sudah digunakan.');
+          return;
+        }
+        laptops.push({ kode, nama, merek, harga, stok });
+        alert('Data berhasil disimpan.');
+      }
+
+      saveLaptopData(laptops);
+      renderTable();
+      resetForm();
+    });
+
+    // Event klik tombol edit dan hapus menggunakan event delegation
+    document.getElementById('laptopTableBody').addEventListener('click', function(event) {
+      const target = event.target;
+
+      if (target.classList.contains('editBtn')) {
+        const index = Number(target.dataset.index);
+        const laptops = getLaptopData();
+        const laptop = laptops[index];
+
+        // Isi form dengan data yang akan diedit
+        document.getElementById('kode').value = laptop.kode;
+        document.getElementById('nama').value = laptop.nama;
+        document.getElementById('merek').value = laptop.merek;
+        document.getElementById('harga').value = laptop.harga;
+        document.getElementById('stok').value = laptop.stok;
+
+        editingIndex = index;
+        document.querySelector('#laptopForm button[type="submit"]').textContent = 'Update';
+
+      } else if (target.classList.contains('deleteBtn')) {
+        const index = Number(target.dataset.index);
+        if (confirm('Apakah Anda yakin ingin menghapus data ini?')) {
+          let laptops = getLaptopData();
+          laptops.splice(index, 1);
+          saveLaptopData(laptops);
+          renderTable();
+          if (editingIndex === index) resetForm();
+          alert('Data berhasil dihapus.');
+        }
+      }
+    });
+
+    // Pencarian data
+    document.getElementById('searchInput').addEventListener('input', function(event) {
+      const filter = event.target.value;
+      renderTable(filter);
+    });
+
+    // Tombol reset form
+    document.getElementById('resetForm').addEventListener('click', () => {
+      resetForm();
+    });
+
+    // Tampilkan data saat halaman pertama kali dibuka
+    renderTable();
+  </script>
+
+</body>
+</html>
