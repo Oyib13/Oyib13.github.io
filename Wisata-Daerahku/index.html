@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Explore Nusantara</title>
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+
+<body class="font-[Poppins] bg-gray-50">
+
+  <!-- ===== NAVBAR ===== -->
+  <header id="navbar" class="fixed w-full top-0 left-0 z-50 transition-all duration-500">
+    <div class="container mx-auto flex justify-between items-center px-6 py-4">
+      <div class="flex items-center space-x-3">
+        <img src="assets/img/logo.png" alt="Logo" class="w-10 h-10 rounded-full border border-white">
+        <h1 class="text-2xl font-bold text-white tracking-wide">Explore Nusantara</h1>
+      </div>
+
+      <!-- Menu (Desktop) -->
+      <nav id="nav-menu" class="hidden md:flex space-x-8 text-white text-lg font-medium">
+        <a href="index.html" class="text-yellow-300 font-semibold">Beranda</a>
+        <a href="destinasi.html" class="hover:text-yellow-300 transition">Destinasi</a>
+        <a href="galeri.html" class="hover:text-yellow-300 transition">Galeri</a>
+        <a href="kontak.html" class="hover:text-yellow-300 transition">Kontak</a>
+      </nav>
+
+      <!-- Hamburger -->
+      <button id="menu-btn" class="block md:hidden focus:outline-none z-50">
+        <div class="menu-icon space-y-1.5">
+          <span class="block w-7 h-0.5 bg-white transition-all duration-300"></span>
+          <span class="block w-7 h-0.5 bg-white transition-all duration-300"></span>
+          <span class="block w-7 h-0.5 bg-white transition-all duration-300"></span>
+        </div>
+      </button>
+    </div>
+
+    <!-- Mobile Menu (Right Dropdown) -->
+    <div id="mobile-menu"
+      class="hidden absolute top-16 right-4 bg-blue-900/95 rounded-xl shadow-lg py-4 px-6 text-white text-lg flex flex-col space-y-3 w-48 opacity-0">
+      <a href="index.html" class="hover:text-yellow-300">Beranda</a>
+      <a href="destinasi.html" class="hover:text-yellow-300">Destinasi</a>
+      <a href="galeri.html" class="hover:text-yellow-300">Galeri</a>
+      <a href="kontak.html" class="hover:text-yellow-300">Kontak</a>
+    </div>
+  </header>
+
+  <!-- ===== HERO SECTION ===== -->
+  <section class="relative h-[100vh] flex items-center justify-center bg-cover bg-center" 
+           style="background-image: url('assets/img/background.png');">
+    <div class="absolute inset-0 bg-gradient-to-b from-black/60 to-blue-900/80"></div>
+    <div class="relative z-10 text-center px-6">
+      <h2 class="text-4xl md:text-6xl font-bold text-white mb-4 drop-shadow-lg">
+        Jelajahi Keindahan Alam Indonesia
+      </h2>
+      <p class="text-lg md:text-xl text-gray-200 mb-8">
+        Gunung, pantai, budaya, dan kuliner — semua keajaiban ada di sini.
+      </p>
+      <a href="destinasi.html" 
+         class="glow-btn text-lg font-semibold text-white px-8 py-3 rounded-full shadow-lg transition-all">
+        Mulai Petualangan
+      </a>
+    </div>
+  </section>
+
+  <!-- ===== DESTINASI SECTION ===== -->
+  <section class="py-20 container mx-auto px-6">
+    <h3 class="text-3xl md:text-4xl font-bold text-center text-blue-900 mb-14">
+      Destinasi Populer
+    </h3>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+
+      <!-- Card -->
+      <div class="card group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500">
+        <div class="overflow-hidden">
+          <img src="assets/img/bromo.png" class="w-full h-60 object-cover group-hover:scale-110 transition-all duration-500" alt="Alam">
+        </div>
+        <div class="p-6">
+          <h4 class="text-2xl font-semibold text-blue-800 mb-3">Wisata Alam</h4>
+          <p class="text-gray-600 mb-5">Menikmati keindahan gunung, pantai, dan danau dari Sabang sampai Merauke.</p>
+          <a href="destinasi.html" class="inline-block bg-blue-700 text-white px-5 py-2 rounded-full hover:bg-blue-900 transition">Selengkapnya</a>
+        </div>
+      </div>
+
+      <!-- Card -->
+      <div class="card group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500">
+        <div class="overflow-hidden">
+          <img src="assets/img/presean.png" class="w-full h-60 object-cover group-hover:scale-110 transition-all duration-500" alt="Budaya">
+        </div>
+        <div class="p-6">
+          <h4 class="text-2xl font-semibold text-blue-800 mb-3">Wisata Budaya</h4>
+          <p class="text-gray-600 mb-5">Rasakan kekayaan seni dan tradisi dari berbagai daerah Indonesia.</p>
+          <a href="destinasi.html" class="inline-block bg-blue-700 text-white px-5 py-2 rounded-full hover:bg-blue-900 transition">Selengkapnya</a>
+        </div>
+      </div>
+
+      <!-- Card -->
+      <div class="card group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500">
+        <div class="overflow-hidden">
+          <img src="assets/img/kuliner.png" class="w-full h-60 object-cover group-hover:scale-110 transition-all duration-500" alt="Kuliner">
+        </div>
+        <div class="p-6">
+          <h4 class="text-2xl font-semibold text-blue-800 mb-3">Wisata Kuliner</h4>
+          <p class="text-gray-600 mb-5">Nikmati aneka rasa khas Indonesia yang menggugah selera.</p>
+          <a href="destinasi.html" class="inline-block bg-blue-700 text-white px-5 py-2 rounded-full hover:bg-blue-900 transition">Selengkapnya</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="bg-blue-950 text-gray-200 py-6 text-center">
+    <p>&copy; 2025 Explore Nusantara | Designed by <span class="font-semibold text-yellow-300">Ismail Toyyib</span></p>
+  </footer>
+
+  <script src="assets/js/script.js"></script>
+</body>
+</html>

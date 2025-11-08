@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Destinasi - Explore Nusantara</title>
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+
+<body class="font-[Poppins] bg-gray-50">
+
+  <!-- ===== NAVBAR ===== -->
+  <header id="navbar" class="fixed w-full top-0 left-0 z-50 transition-all duration-500">
+    <div class="container mx-auto flex justify-between items-center px-6 py-4">
+      <div class="flex items-center space-x-3">
+        <img src="assets/img/logo.png" alt="Logo" class="w-10 h-10 rounded-full border border-white">
+        <h1 class="text-2xl font-bold text-white tracking-wide">Explore Nusantara</h1>
+      </div>
+
+      <!-- Menu Desktop -->
+      <nav id="nav-menu" class="hidden md:flex space-x-8 text-white text-lg font-medium">
+        <a href="index.html" class="hover:text-yellow-300 transition">Beranda</a>
+        <a href="destinasi.html" class="text-yellow-300 font-semibold">Destinasi</a>
+        <a href="galeri.html" class="hover:text-yellow-300 transition">Galeri</a>
+        <a href="kontak.html" class="hover:text-yellow-300 transition">Kontak</a>
+      </nav>
+
+      <!-- Hamburger -->
+      <button id="menu-btn" class="block md:hidden focus:outline-none z-50">
+        <div class="menu-icon space-y-1.5">
+          <span class="block w-7 h-0.5 bg-white transition-all duration-300"></span>
+          <span class="block w-7 h-0.5 bg-white transition-all duration-300"></span>
+          <span class="block w-7 h-0.5 bg-white transition-all duration-300"></span>
+        </div>
+      </button>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu"
+      class="hidden absolute top-16 right-4 bg-blue-900/95 rounded-xl shadow-lg py-4 px-6 text-white text-lg flex flex-col space-y-3 w-48 opacity-0">
+      <a href="index.html" class="hover:text-yellow-300">Beranda</a>
+      <a href="destinasi.html" class="hover:text-yellow-300">Destinasi</a>
+      <a href="galeri.html" class="hover:text-yellow-300">Galeri</a>
+      <a href="kontak.html" class="hover:text-yellow-300">Kontak</a>
+    </div>
+  </header>
+
+  <!-- ===== HERO ===== -->
+  <section class="relative h-[60vh] flex items-center justify-center bg-cover bg-center"
+           style="background-image: url('assets/img/bckg.png');">
+    <div class="absolute inset-0 bg-gradient-to-b from-black/50 to-blue-900/70"></div>
+    <div class="relative z-10 text-center text-white px-6">
+      <h2 class="text-4xl md:text-5xl font-bold mb-3">Destinasi Wisata Indonesia</h2>
+      <p class="text-lg text-gray-200">Temukan surga tersembunyi dan keindahan alam dari berbagai daerah Nusantara.</p>
+    </div>
+  </section>
+
+  <!-- ===== DAFTAR DESTINASI ===== -->
+  <section class="py-20 container mx-auto px-6">
+    <h3 class="text-3xl md:text-4xl font-bold text-center text-blue-900 mb-14">
+      8 Destinasi Terpopuler
+    </h3>
+
+    <div id="destinasi-list" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+
+      <!-- 1 -->
+      <div class="card reveal bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500">
+        <img src="assets/img/Rinjani.png" alt="Gunung Rinjani" class="w-full h-52 object-cover">
+        <div class="p-5">
+          <h4 class="text-xl font-semibold text-blue-800 mb-2">Gunung Rinjani</h4>
+          <p class="text-gray-600 mb-4 text-sm">Pesona NTB dengan Danau Segara Anak yang indah.</p>
+          <a href="detail_destinasi.html?destinasi=rinjani" class="inline-block bg-blue-700 text-white px-4 py-2 rounded-full hover:bg-blue-900 transition">Detail</a>
+        </div>
+      </div>
+
+      <!-- 2 -->
+      <div class="card reveal bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500">
+        <img src="assets/img/bromo.png" alt="Gunung Bromo" class="w-full h-52 object-cover">
+        <div class="p-5">
+          <h4 class="text-xl font-semibold text-blue-800 mb-2">Gunung Bromo</h4>
+          <p class="text-gray-600 mb-4 text-sm">Panorama sunrise menakjubkan di Jawa Timur.</p>
+          <a href="detail_destinasi.html?destinasi=bromo" class="inline-block bg-blue-700 text-white px-4 py-2 rounded-full hover:bg-blue-900 transition">Detail</a>
+        </div>
+      </div>
+
+      <!-- 3 -->
+      <div class="card reveal bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500">
+        <img src="assets/img/komodo.png" alt="Pulau Komodo" class="w-full h-52 object-cover">
+        <div class="p-5">
+          <h4 class="text-xl font-semibold text-blue-800 mb-2">Pulau Komodo</h4>
+          <p class="text-gray-600 mb-4 text-sm">Habitat komodo di Taman Nasional Komodo, NTT.</p>
+          <a href="detail_destinasi.html?destinasi=komodo" class="inline-block bg-blue-700 text-white px-4 py-2 rounded-full hover:bg-blue-900 transition">Detail</a>
+        </div>
+      </div>
+
+      <!-- 4 -->
+      <div class="card reveal bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500">
+        <img src="assets/img/toraja.png" alt="Tana Toraja" class="w-full h-52 object-cover">
+        <div class="p-5">
+          <h4 class="text-xl font-semibold text-blue-800 mb-2">Tana Toraja</h4>
+          <p class="text-gray-600 mb-4 text-sm">Kekayaan budaya unik di pegunungan Sulawesi.</p>
+          <a href="detail_destinasi.html?destinasi=toraja" class="inline-block bg-blue-700 text-white px-4 py-2 rounded-full hover:bg-blue-900 transition">Detail</a>
+        </div>
+      </div>
+
+      <!-- 5 -->
+      <div class="card reveal bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500">
+        <img src="assets/img/raja empat.png" alt="Raja Ampat" class="w-full h-52 object-cover">
+        <div class="p-5">
+          <h4 class="text-xl font-semibold text-blue-800 mb-2">Raja Ampat</h4>
+          <p class="text-gray-600 mb-4 text-sm">Surga bawah laut di Papua Barat dengan keindahan karang.</p>
+          <a href="detail_destinasi.html?destinasi=rajaampat" class="inline-block bg-blue-700 text-white px-4 py-2 rounded-full hover:bg-blue-900 transition">Detail</a>
+        </div>
+      </div>
+
+      <!-- 6 -->
+      <div class="card reveal bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500">
+        <img src="assets/img/bali.png" alt="Bali" class="w-full h-52 object-cover">
+        <div class="p-5">
+          <h4 class="text-xl font-semibold text-blue-800 mb-2">Pulau Bali</h4>
+          <p class="text-gray-600 mb-4 text-sm">Ikon pariwisata dunia dengan pantai dan budaya memikat.</p>
+          <a href="detail_destinasi.html?destinasi=bali" class="inline-block bg-blue-700 text-white px-4 py-2 rounded-full hover:bg-blue-900 transition">Detail</a>
+        </div>
+      </div>
+
+      <!-- 7 -->
+      <div class="card reveal bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500">
+        <img src="assets/img/belitung.png" alt="Belitung" class="w-full h-52 object-cover">
+        <div class="p-5">
+          <h4 class="text-xl font-semibold text-blue-800 mb-2">Pulau Belitung</h4>
+          <p class="text-gray-600 mb-4 text-sm">Pantai berpasir putih dengan batu granit raksasa nan eksotis.</p>
+          <a href="detail_destinasi.html?destinasi=belitung" class="inline-block bg-blue-700 text-white px-4 py-2 rounded-full hover:bg-blue-900 transition">Detail</a>
+        </div>
+      </div>
+
+      <!-- 8 -->
+      <div class="card reveal bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500">
+        <img src="assets/img/labuan bajo.png" alt="Labuan Bajo" class="w-full h-52 object-cover">
+        <div class="p-5">
+          <h4 class="text-xl font-semibold text-blue-800 mb-2">Labuan Bajo</h4>
+          <p class="text-gray-600 mb-4 text-sm">Gerbang menuju surga wisata Flores dan pulau-pulau eksotis.</p>
+          <a href="detail_destinasi.html?destinasi=labuanbajo" class="inline-block bg-blue-700 text-white px-4 py-2 rounded-full hover:bg-blue-900 transition">Detail</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="bg-blue-950 text-gray-200 py-6 text-center">
+    <p>&copy; 2025 Explore Nusantara | Designed by <span class="font-semibold text-yellow-300">Ismail Toyyib</span></p>
+  </footer>
+
+  <script src="assets/js/script.js"></script>
+</body>
+</html>

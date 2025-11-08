@@ -1,0 +1,49 @@
+/* Navbar transparan berubah saat scroll */
+#navbar {
+  background: transparent;
+}
+#navbar.scrolled {
+  background: rgba(23, 37, 84, 0.95);
+  backdrop-filter: blur(6px);
+}
+
+/* Hamburger animasi */
+#menu-btn.open span:nth-child(1) {
+  transform: rotate(45deg) translateY(8px);
+}
+#menu-btn.open span:nth-child(2) {
+  opacity: 0;
+}
+#menu-btn.open span:nth-child(3) {
+  transform: rotate(-45deg) translateY(-8px);
+}
+
+/* Tombol Glow */
+.glow-btn {
+  background: linear-gradient(90deg, #2563eb, #1e40af);
+  box-shadow: 0 0 20px rgba(59, 130, 246, 0.6);
+}
+.glow-btn:hover {
+  box-shadow: 0 0 35px rgba(59, 130, 246, 1);
+  transform: scale(1.05);
+}
+
+/* Smooth Scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+/* === Animasi SlideDown === */
+@keyframes slideDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px) scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+.animate-slideDown {
+  animation: slideDown 0.3s ease forwards;
+}

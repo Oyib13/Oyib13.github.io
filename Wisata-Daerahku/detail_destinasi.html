@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Detail Destinasi - Explore Nusantara</title>
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body class="bg-gray-50 font-[Poppins]">
+
+  <!-- Navbar -->
+  <header class="bg-blue-900 text-white py-4 px-6 flex justify-between items-center shadow-md">
+    <h1 class="text-xl font-bold">Explore Nusantara</h1>
+    <a href="destinasi.html" class="text-yellow-300 hover:underline">&larr; Kembali ke Destinasi</a>
+  </header>
+
+  <!-- Detail Konten -->
+  <main class="container mx-auto px-6 py-12" id="detail-container">
+    <div class="flex flex-col lg:flex-row bg-white rounded-2xl shadow-lg overflow-hidden">
+      <img id="destinasi-img" src="/assets/img/bromo.png" alt="" class="lg:w-1/2 h-72 lg:h-auto object-cover">
+      <div class="p-6 lg:w-1/2">
+        <h2 id="destinasi-nama" class="text-3xl font-bold text-blue-800 mb-3"></h2>
+        <p id="destinasi-deskripsi" class="text-gray-700 mb-4"></p>
+        <p class="font-semibold text-gray-800">📍 Lokasi: <span id="destinasi-lokasi"></span></p>
+
+        <!-- Tombol Cuaca -->
+        <button id="cekCuaca" class="mt-5 bg-blue-700 hover:bg-blue-800 text-white px-5 py-2 rounded-lg shadow">
+          Cek Cuaca
+        </button>
+        <p id="hasilCuaca" class="mt-3 text-gray-700"></p>
+
+        <!-- Kalkulator Estimasi Biaya -->
+        <div class="mt-8 bg-blue-50 p-5 rounded-xl shadow-inner">
+          <h3 class="text-xl font-bold text-blue-700 mb-3">Kalkulator Estimasi Biaya Perjalanan</h3>
+
+          <label class="block mb-2">Jarak (Km):</label>
+          <input type="number" id="jarak" placeholder="Masukkan jarak..." class="w-full border border-gray-300 rounded-lg p-2 mb-3">
+
+          <label class="block mb-2">Pilih Transportasi:</label>
+          <select id="transportasi" class="w-full border border-gray-300 rounded-lg p-2 mb-3">
+            <option value="mobil">Mobil</option>
+            <option value="motor">Motor</option>
+            <option value="bus">Bus</option>
+          </select>
+
+          <button id="hitungBiaya" class="w-full bg-green-600 hover:bg-green-700 text-white py-2 rounded-lg">Hitung Estimasi</button>
+          <p id="hasilBiaya" class="mt-3 text-gray-700 font-semibold"></p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-blue-950 text-gray-200 py-6 text-center">
+    <p>&copy; 2025 Explore Nusantara | Designed by <span class="font-semibold text-yellow-300">Ismail Toyyib</span></p>
+  </footer>
+
+  <!-- Script -->
+  <script src="assets/js/detail.js"></script>
+</body>
+</html>

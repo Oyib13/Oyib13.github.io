@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Galeri - Explore Nusantara</title>
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body class="font-[Poppins] bg-gray-50">
+
+
+  <!-- ===== NAVBAR ===== -->
+  <header id="navbar" class="fixed w-full top-0 left-0 z-50 transition-all duration-500">
+    <div class="container mx-auto flex justify-between items-center px-6 py-4">
+      <div class="flex items-center space-x-3">
+        <img src="assets/img/logo.png" alt="Logo" class="w-10 h-10 rounded-full border border-white">
+        <h1 class="text-2xl font-bold text-white tracking-wide">Explore Nusantara</h1>
+      </div>
+
+      <!-- Menu Desktop -->
+      <nav id="nav-menu" class="hidden md:flex space-x-8 text-white text-lg font-medium">
+        <a href="index.html" class="hover:text-yellow-300 transition">Beranda</a>
+        <a href="destinasi.html" class="hover:text-yellow-300 transition">Destinasi</a>
+        <a href="galeri.html" class="text-yellow-300 font-semibold">Galeri</a>
+        <a href="kontak.html" class="hover:text-yellow-300 transition">Kontak</a>
+      </nav>
+
+      <!-- Hamburger -->
+      <button id="menu-btn" class="block md:hidden focus:outline-none z-50">
+        <div class="menu-icon space-y-1.5">
+          <span class="block w-7 h-0.5 bg-white transition-all duration-300"></span>
+          <span class="block w-7 h-0.5 bg-white transition-all duration-300"></span>
+          <span class="block w-7 h-0.5 bg-white transition-all duration-300"></span>
+        </div>
+      </button>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu"
+      class="hidden absolute top-16 right-4 bg-blue-900/95 rounded-xl shadow-lg py-4 px-6 text-white text-lg flex flex-col space-y-3 w-48 opacity-0">
+      <a href="index.html" class="hover:text-yellow-300">Beranda</a>
+      <a href="destinasi.html" class="hover:text-yellow-300">Destinasi</a>
+      <a href="galeri.html" class="hover:text-yellow-300">Galeri</a>
+      <a href="kontak.html" class="hover:text-yellow-300">Kontak</a>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="relative h-[40vh] flex items-center justify-center bg-cover bg-center"
+           style="background-image: url('assets/img/background.png');">
+    <div class="absolute inset-0 bg-gradient-to-b from-black/50 to-blue-900/70"></div>
+    <div class="relative z-10 text-center text-white px-6">
+      <h2 class="text-4xl md:text-5xl font-bold mb-3">Galeri Destinasi</h2>
+      <p class="text-lg text-gray-200">Kumpulan foto indah dari berbagai destinasi di Nusantara.</p>
+    </div>
+  </section>
+<section class="py-20 container mx-auto px-6">
+  <h3 class="text-3xl md:text-4xl font-bold text-center text-blue-900 mb-6">
+    Galeri Destinasi
+  </h3>
+
+  <!-- Tombol Toggle -->
+  <div class="text-center mb-10">
+    <button id="toggleGaleri" class="bg-blue-700 hover:bg-blue-800 text-white px-6 py-2 rounded-lg shadow">
+      Tampilkan / Sembunyikan Galeri
+    </button>
+  </div>
+
+  <!-- Grid Galeri -->
+  <div id="galeriGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+    <!-- Foto 1 -->
+    <div class="card bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-300">
+      <img src="assets/img/belitung.png" alt="Foto 1" class="w-full h-52 object-cover">
+      <div class="p-5">
+        <h4 class="text-xl font-semibold text-blue-800 mb-2">Pantai Eksotis</h4>
+        <p class="text-gray-600 mb-4 text-sm">Pemandangan laut yang menawan.</p>
+      </div>
+    </div>
+
+    <!-- Foto 2 -->
+    <div class="card bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-300">
+      <img src="assets/img/Rinjani.png" alt="Foto 2" class="w-full h-52 object-cover">
+      <div class="p-5">
+        <h4 class="text-xl font-semibold text-blue-800 mb-2">Gunung Menakjubkan</h4>
+        <p class="text-gray-600 mb-4 text-sm">Sunrise yang memukau dari puncak gunung.</p>
+      </div>
+    </div>
+
+    <!-- Foto 3 -->
+    <div class="card bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-300">
+      <img src="assets/img/bckg.png" alt="Foto 3" class="w-full h-52 object-cover">
+      <div class="p-5">
+        <h4 class="text-xl font-semibold text-blue-800 mb-2">Hutan Tropis</h4>
+        <p class="text-gray-600 mb-4 text-sm">Keindahan flora dan fauna asli Indonesia.</p>
+      </div>
+    </div>
+
+    <!-- Foto 4 -->
+    <div class="card bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-300">
+      <img src="assets/img/danau.png" alt="Foto 4" class="w-full h-52 object-cover">
+      <div class="p-5">
+        <h4 class="text-xl font-semibold text-blue-800 mb-2">Danau Segara Anak</h4>
+        <p class="text-gray-600 mb-4 text-sm">Pesona danau indah di kaki Gunung Rinjani.</p>
+      </div>
+    </div>
+
+    <!-- Foto 5 -->
+    <div class="card bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-300">
+      <img src="assets/img/raja empat.png" alt="Foto 5" class="w-full h-52 object-cover">
+      <div class="p-5">
+        <h4 class="text-xl font-semibold text-blue-800 mb-2">Pantai Karang</h4>
+        <p class="text-gray-600 mb-4 text-sm">Karang alami dengan pemandangan sunset yang memukau.</p>
+      </div>
+    </div>
+
+    <!-- Foto 6 -->
+    <div class="card bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-300">
+      <img src="assets/img/belitung.png" alt="Foto 6" class="w-full h-52 object-cover">
+      <div class="p-5">
+        <h4 class="text-xl font-semibold text-blue-800 mb-2">Pulau Tropis</h4>
+        <p class="text-gray-600 mb-4 text-sm">Keindahan pulau eksotis yang masih alami.</p>
+      </div>
+    </div>
+
+    <!-- Foto 7 -->
+    <div class="card bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-300">
+      <img src="assets/img/terjun.png" alt="Foto 7" class="w-full h-52 object-cover">
+      <div class="p-5">
+        <h4 class="text-xl font-semibold text-blue-800 mb-2">Air Terjun</h4>
+        <p class="text-gray-600 mb-4 text-sm">Air terjun indah yang dikelilingi hutan hijau.</p>
+      </div>
+    </div>
+
+    <!-- Foto 8 -->
+    <div class="card bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-300">
+      <img src="assets/img/bromo.png" alt="Foto 8" class="w-full h-52 object-cover">
+      <div class="p-5">
+        <h4 class="text-xl font-semibold text-blue-800 mb-2">Bukit Hijau</h4>
+        <p class="text-gray-600 mb-4 text-sm">Pemandangan bukit dengan hamparan hijau yang luas.</p>
+      </div>
+    </div>
+
+    <!-- Foto 9 -->
+    <div class="card bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-300">
+      <img src="assets/img/bali.png" alt="Foto 9" class="w-full h-52 object-cover">
+      <div class="p-5">
+        <h4 class="text-xl font-semibold text-blue-800 mb-2">Sunset Pantai</h4>
+        <p class="text-gray-600 mb-4 text-sm">Senja di pantai dengan langit oranye memikat.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+  <!-- FOOTER -->
+  <footer class="bg-blue-950 text-gray-200 py-6 text-center">
+    <p>&copy; 2025 Explore Nusantara | Designed by <span class="font-semibold text-yellow-300">Ismail Toyyib</span></p>
+  </footer>
+    <!-- Script -->     
+    <script src="assets/js/script.js"></script>
+</body>
+</html>

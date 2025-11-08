@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kontak - Explore Nusantara</title>
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+
+<body class="font-[Poppins] bg-gray-50">
+
+  <!-- ===== NAVBAR ===== -->
+  <header id="navbar" class="fixed w-full top-0 left-0 z-50 transition-all duration-500">
+    <div class="container mx-auto flex justify-between items-center px-6 py-4">
+      <div class="flex items-center space-x-3">
+        <img src="assets/img/logo.png" alt="Logo" class="w-10 h-10 rounded-full border border-white">
+        <h1 class="text-2xl font-bold text-white tracking-wide">Explore Nusantara</h1>
+      </div>
+
+      <!-- Menu Desktop -->
+      <nav id="nav-menu" class="hidden md:flex space-x-8 text-white text-lg font-medium">
+        <a href="index.html" class="hover:text-yellow-300 transition">Beranda</a>
+        <a href="destinasi.html" class="hover:text-yellow-300 transition">Destinasi</a>
+        <a href="galeri.html" class="hover:text-yellow-300 transition">Galeri</a>
+        <a href="kontak.html" class="text-yellow-300 font-semibold">Kontak</a>
+      </nav>
+
+      <!-- Hamburger -->
+      <button id="menu-btn" class="block md:hidden focus:outline-none z-50">
+        <div class="menu-icon space-y-1.5">
+          <span class="block w-7 h-0.5 bg-white transition-all duration-300"></span>
+          <span class="block w-7 h-0.5 bg-white transition-all duration-300"></span>
+          <span class="block w-7 h-0.5 bg-white transition-all duration-300"></span>
+        </div>
+      </button>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu"
+      class="hidden absolute top-16 right-4 bg-blue-900/95 rounded-xl shadow-lg py-4 px-6 text-white text-lg flex flex-col space-y-3 w-48 opacity-0">
+      <a href="index.html" class="hover:text-yellow-300">Beranda</a>
+      <a href="destinasi.html" class="hover:text-yellow-300">Destinasi</a>
+      <a href="galeri.html" class="hover:text-yellow-300">Galeri</a>
+      <a href="kontak.html" class="hover:text-yellow-300">Kontak</a>
+    </div>
+  </header>
+
+  <!-- ===== HERO ===== -->
+  <section class="relative h-[50vh] flex items-center justify-center bg-cover bg-center"
+           style="background-image: url('assets/img/bali.png');">
+    <div class="absolute inset-0 bg-gradient-to-b from-black/50 to-blue-900/70"></div>
+    <div class="relative z-10 text-center text-white px-6">
+      <h2 class="text-4xl md:text-5xl font-bold mb-3">Kontak Kami</h2>
+      <p class="text-lg text-gray-200">Hubungi kami untuk informasi lebih lanjut atau saran mengenai destinasi wisata.</p>
+    </div>
+  </section>
+
+<!-- ===== FORM KONTAK ===== -->
+<section class="py-20 container mx-auto px-6">
+  <div class="bg-blue-50 p-8 rounded-2xl shadow-lg w-full md:w-1/2 mx-auto">
+    <h3 class="text-2xl font-bold text-blue-800 mb-6 text-center">Form Kontak</h3>
+    <form id="formKontak">
+      <input type="text" id="kontak-nama" placeholder="Nama" class="w-full border border-gray-300 rounded-lg p-2 mb-4" required>
+      <input type="email" id="kontak-email" placeholder="Email" class="w-full border border-gray-300 rounded-lg p-2 mb-4" required>
+      <textarea id="kontak-pesan" placeholder="Pesan" class="w-full border border-gray-300 rounded-lg p-2 mb-4" required></textarea>
+
+      <!-- Rating Bintang -->
+      <div class="mb-4">
+        <label class="block text-blue-800 font-semibold mb-2">Rating:</label>
+        <div id="starRating" class="flex space-x-1 text-yellow-400 text-2xl cursor-pointer">
+          <span data-value="1">&#9733;</span>
+          <span data-value="2">&#9733;</span>
+          <span data-value="3">&#9733;</span>
+          <span data-value="4">&#9733;</span>
+          <span data-value="5">&#9733;</span>
+        </div>
+        <input type="hidden" id="kontak-rating" name="rating" value="0">
+      </div>
+
+      <button type="submit" class="w-full bg-blue-700 hover:bg-blue-800 text-white py-2 rounded-lg shadow">Kirim Pesan</button>
+    </form>
+  </div>
+
+ <!-- ===== TAMPILAN ULASAN ===== -->
+<div id="ulasanContainer" class="mt-12 w-full md:w-1/2 mx-auto space-y-6">
+  <h3 class="text-2xl font-bold text-blue-800 mb-4 text-center">Ulasan Pengunjung</h3>
+  <!-- Ulasan akan muncul di sini -->
+</div>
+
+<script>
+  // Form Kontak & Rating
+  const formKontak = document.getElementById('formKontak');
+  const stars = document.querySelectorAll('#starRating span');
+  const ratingInput = document.getElementById('kontak-rating');
+  const ulasanContainer = document.getElementById('ulasanContainer');
+  let currentRating = 0;
+
+  function updateStars() {
+    stars.forEach(s => {
+      if(s.getAttribute('data-value') <= currentRating){
+        s.classList.add('text-yellow-400');
+        s.classList.remove('text-gray-300');
+      } else {
+        s.classList.remove('text-yellow-400');
+        s.classList.add('text-gray-300');
+      }
+    });
+  }
+
+  stars.forEach(star => {
+    star.addEventListener('click', function() {
+      currentRating = this.getAttribute('data-value');
+      ratingInput.value = currentRating;
+      updateStars();
+    });
+
+    star.addEventListener('mouseover', function() {
+      const hoverValue = this.getAttribute('data-value');
+      stars.forEach(s => {
+        if(s.getAttribute('data-value') <= hoverValue){
+          s.classList.add('text-yellow-300');
+        } else {
+          s.classList.remove('text-yellow-300');
+        }
+      });
+    });
+
+    star.addEventListener('mouseout', function() {
+      updateStars();
+    });
+  });
+
+  // Submit form
+  formKontak.addEventListener('submit', function(e){
+    e.preventDefault();
+    
+    const nama = document.getElementById('kontak-nama').value;
+    const email = document.getElementById('kontak-email').value;
+    const pesan = document.getElementById('kontak-pesan').value;
+    const rating = ratingInput.value;
+
+    // Buat elemen ulasan
+    const ulasan = document.createElement('div');
+    ulasan.classList.add('bg-white', 'p-4', 'rounded-xl', 'shadow-md');
+
+    ulasan.innerHTML = `
+      <p class="font-semibold text-blue-800 mb-1">${nama} (${email})</p>
+      <p class="text-yellow-400 mb-2">${'★'.repeat(rating)}${'☆'.repeat(5-rating)}</p>
+      <p class="text-gray-700 mb-2">${pesan}</p>
+      <button class="hapusUlasan bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded font-semibold">Hapus</button>
+    `;
+
+    // Tambahkan ulasan ke container
+    ulasanContainer.appendChild(ulasan);
+
+    // Event listener tombol hapus
+    const btnHapus = ulasan.querySelector('.hapusUlasan');
+    btnHapus.addEventListener('click', function() {
+      ulasanContainer.removeChild(ulasan);
+    });
+
+    // Reset form
+    this.reset();
+    currentRating = 0;
+    updateStars();
+  });
+</script>
+
+
+</body>
+</html>
